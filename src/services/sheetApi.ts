@@ -84,8 +84,7 @@ export async function submitToSheet(row: SheetRow): Promise<{ ok: boolean; error
 /** Fetch sheet data for dashboard (doGet). In dev uses /api/sheet proxy; in prod uses READ_URL or WEB_APP_URL. */
 export async function getSheetData(): Promise<{ ok: boolean; data?: SheetDataResponse; error?: string }> {
   const url = READ_URL;
-  const isProxy = url.startsWith('/');
-  if (!url || (!isProxy && !url.startsWith('http'))) {
+  if (!url || (!url.startsWith('/') && !url.startsWith('http'))) {
     return { ok: false, error: 'Sheet URL not configured. Set VITE_GOOGLE_SHEET_WEB_APP_URL in .env' };
   }
   try {
