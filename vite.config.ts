@@ -5,8 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const sheetUrl = env.VITE_GOOGLE_SHEET_WEB_APP_URL
+  // GitHub Pages: set VITE_BASE_PATH to your repo name, e.g. /MerchantInfo/
+  const base = env.VITE_BASE_PATH ?? '/'
 
   return {
+    base,
     plugins: [react()],
     server: {
       proxy: sheetUrl?.startsWith('http')

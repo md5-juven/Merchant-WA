@@ -1,14 +1,15 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import Nav from './components/Nav';
 import Home from './pages/Home';
 import MerchantForm from './components/MerchantForm';
 import './App.css';
 
+// HashRouter so routing works on GitHub Pages (no server redirects)
 function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Nav />
         <main className="app-main">
           <Routes>
@@ -16,7 +17,7 @@ function App() {
             <Route path="/form" element={<MerchantForm />} />
           </Routes>
         </main>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }
