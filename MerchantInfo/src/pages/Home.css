@@ -1,0 +1,275 @@
+.dashboard {
+  min-height: calc(100vh - 56px);
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.dashboard-header {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.dashboard-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dashboard-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 1.75rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.dashboard-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.dashboard-cta {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--btn-text);
+  background: var(--accent);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.dashboard-cta:hover {
+  background: var(--accent-hover);
+  box-shadow: var(--shadow-btn);
+}
+
+.dashboard-error {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--text-muted);
+}
+
+/* Shimmer skeleton loading */
+.dashboard-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.skeleton-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.skeleton-card {
+  height: 88px;
+  border-radius: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+}
+
+.skeleton-chart-card {
+  border-radius: 16px;
+  padding: 1.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  min-height: 320px;
+}
+
+.skeleton-chart-title {
+  height: 1.25rem;
+  width: 48%;
+  max-width: 200px;
+  border-radius: 6px;
+  background: var(--border);
+  margin-bottom: 1.5rem;
+}
+
+.skeleton-donut {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: var(--border);
+  opacity: 0.7;
+}
+
+.skeleton-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1rem;
+  height: 200px;
+  padding: 0 1rem;
+}
+
+.skeleton-bar {
+  flex: 1;
+  max-width: 48px;
+  min-width: 24px;
+  border-radius: 6px 6px 0 0;
+  background: var(--border);
+  opacity: 0.8;
+}
+
+/* Shimmer animation */
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .skeleton-shimmer::after {
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.dashboard-error p {
+  margin: 0 0 0.5rem;
+}
+
+.dashboard-error-hint {
+  font-size: 0.85rem;
+  max-width: 420px;
+  margin: 0.75rem auto 0 !important;
+}
+
+.dashboard-error-hint code {
+  background: var(--input-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+/* Insight cards */
+.insight-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.insight-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.insight-card-accent {
+  border-color: var(--accent-alpha);
+  background: linear-gradient(135deg, var(--card-bg) 0%, var(--accent-alpha) 100%);
+}
+
+.insight-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.insight-value {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+/* Charts: always stack so pie chart has full width and never gets cut off */
+.dashboard-charts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.chart-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-card);
+  overflow: visible;
+  min-width: 0;
+}
+
+.chart-card-wide {
+  min-width: 0;
+}
+
+/* Wrapper so Recharts ResponsiveContainer and labels don't get clipped */
+.chart-card-inner {
+  width: 100%;
+  min-height: 280px;
+  overflow: visible;
+}
+
+.chart-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1rem;
+}
+
+.chart-empty {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+/* Recharts overrides for theme */
+.recharts-default-tooltip {
+  padding: 0.5rem 0.75rem !important;
+}
+
+.recharts-pie-label-line {
+  stroke: var(--border);
+}
+
+.recharts-text {
+  fill: var(--text-primary);
+}

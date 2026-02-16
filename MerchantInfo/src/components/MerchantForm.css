@@ -1,0 +1,260 @@
+.merchant-form-page {
+  min-height: calc(100vh - 56px);
+  padding: clamp(1rem, 4vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.merchant-form-card {
+  width: 100%;
+  max-width: 100%; /* mobile: full width; tablet/desktop override to 65vw */
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-subtle);
+}
+
+.merchant-form-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.35em;
+  letter-spacing: -0.02em;
+}
+
+.merchant-form-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0 0 1.75rem;
+  line-height: 1.5;
+}
+
+.merchant-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label,
+.label-block {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.required {
+  color: var(--error);
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.8em;
+}
+
+.merchant-form input,
+.merchant-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: var(--input-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.merchant-form input::placeholder,
+.merchant-form textarea::placeholder {
+  color: var(--text-placeholder);
+}
+
+.merchant-form input:hover,
+.merchant-form textarea:hover {
+  border-color: var(--border-hover);
+}
+
+.merchant-form input:focus,
+.merchant-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-alpha);
+}
+
+.merchant-form input.input-error,
+.merchant-form textarea.input-error {
+  border-color: var(--error);
+}
+
+.merchant-form textarea {
+  resize: vertical;
+  min-height: 2.5em;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group-location .location-hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem;
+}
+
+.location-btn {
+  align-self: flex-start;
+  padding: 0.6rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-alpha);
+  border: 1.5px solid var(--accent);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.location-btn:hover:not(:disabled) {
+  background: rgba(99, 102, 241, 0.25);
+}
+
+.location-btn:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.location-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-alpha);
+}
+
+.location-coords {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0.5rem 0 0;
+  font-family: monospace;
+}
+
+.form-group-radio .radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+
+.radio-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.radio-option input {
+  width: auto;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.radio-label {
+  user-select: none;
+}
+
+.error-msg {
+  font-size: 0.8rem;
+  color: var(--error);
+  margin-top: 0.15rem;
+}
+
+.submit-btn {
+  margin-top: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--btn-text);
+  background: var(--accent);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
+}
+
+.submit-btn:hover {
+  background: var(--accent-hover);
+  box-shadow: var(--shadow-btn);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.submit-btn:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-error {
+  margin: 0 0 0.5rem;
+}
+
+.submit-success {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Mobile: single column, full width */
+@media (max-width: 639px) {
+  .merchant-form-page {
+    padding: 1rem;
+    align-items: flex-start;
+    padding-top: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .merchant-form-card {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .radio-group {
+    flex-direction: column;
+  }
+}
+
+/* Tablet (e.g. iPad Gen 6 portrait ~768px) and Desktop: form is 65% of viewport */
+@media (min-width: 640px) {
+  .merchant-form-card {
+    max-width: 65vw;
+    padding: 2rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+  .merchant-form-card {
+    padding: 2.5rem;
+  }
+}
